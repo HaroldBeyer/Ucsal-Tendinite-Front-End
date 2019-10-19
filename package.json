@@ -1,0 +1,27 @@
+{
+  "name": "ucsal-tendinite",
+  "version": "1.0.0",
+  "description": "Our project to the NASA Space Apps Challenge!",
+  "main": "helloWorldWind.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/haroldbeyer/ucsal-tendinite-front-end.git"
+  },
+  "keywords": [
+    "nasa",
+    "ucsal",
+    "spaceapps",
+    "spaceappschalenge",
+    "spaceappschallengesalvador",
+    "spaceappschallengebrasil"
+  ],
+  "author": "Ucsal-Tendinite",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/haroldbeyer/ucsal-tendinite-front-end/issues"
+  },
+  "homepage": "https://gitlab.com/haroldbeyer/ucsal-tendinite-front-end#readme"
+}
