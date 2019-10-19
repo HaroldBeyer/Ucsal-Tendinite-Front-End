@@ -4,6 +4,7 @@
   "description": "Our project to the NASA Space Apps Challenge!",
   "main": "helloWorldWind.js",
   "scripts": {
+    "start": "http-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
