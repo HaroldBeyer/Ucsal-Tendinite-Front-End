@@ -1,6 +1,26 @@
 // Create a WorldWindow for the canvas.
 var wwd = new WorldWind.WorldWindow("canvasOne");
+/*
+const Http = new XMLHttpRequest();
+Http.open("GET", url);
+Http.send();
+Http.onreadystatechange = e => {
+    console.log(Http.responseText);
+};
+*/
+const Http = new XMLHttpRequest();
+const url = "http://localhost:3000/api/diseases";
+Http.open("GET", url);
+Http.send();
 
+Http.onreadystatechange = e => {
+  console.log(Http.responseText);
+};
+
+//const http = require("http");
+//http.get("https//localhost:3000/diseases", res => {
+// console.log(res);
+//});
 console.log("It works!");
 
 wwd.addLayer(new WorldWind.BMNGOneImageLayer());
