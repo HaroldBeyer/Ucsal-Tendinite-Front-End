@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://gitlab.com/haroldbeyer/ucsal-tendinite-front-end/issues"
   },
-  "homepage": "https://gitlab.com/haroldbeyer/ucsal-tendinite-front-end#readme"
+  "homepage": "https://gitlab.com/haroldbeyer/ucsal-tendinite-front-end#readme",
+  "dependencies": {
+    "http-server": "^0.11.1"
+  }
 }
