@@ -11,41 +11,9 @@ wwd.addLayer(new WorldWind.CoordinatesDisplayLayer(wwd));
 wwd.addLayer(new WorldWind.ViewControlsLayer(wwd));
 
 // Add a placemark
-var placemarkLayer = new WorldWind.RenderableLayer();
-wwd.addLayer(placemarkLayer);
-
-var placemarkAttributes = new WorldWind.PlacemarkAttributes(null);
-
-placemarkAttributes.imageOffset = new WorldWind.Offset(
-  WorldWind.OFFSET_FRACTION,
-  0.3,
-  WorldWind.OFFSET_FRACTION,
-  0.0
-);
-
-placemarkAttributes.labelAttributes.offset = new WorldWind.Offset(
-  WorldWind.OFFSET_FRACTION,
-  0.5,
-  WorldWind.OFFSET_FRACTION,
-  1.0
-);
-
-placemarkAttributes.imageSource =
-  WorldWind.configuration.baseUrl + "images/pushpins/plain-red.png";
-
-var position = new WorldWind.Position(-12.96962, -38.513074, 100.0);
-var placemark = new WorldWind.Placemark(position, false, placemarkAttributes);
-
-placemark.label =
-  "Nossa localização: \n" +
-  "Lat " +
-  placemark.position.latitude.toPrecision(4).toString() +
-  "\n" +
-  "Lon " +
-  placemark.position.longitude.toPrecision(5).toString();
-placemark.alwaysOnTop = true;
-
-placemarkLayer.addRenderable(placemark);
+createPlacemark();
+//addPlacemark("Teste", -12.56962, -38.533074);
+//TODO TODO TODO
 
 // Add a polygon
 var polygonLayer = new WorldWind.RenderableLayer();
@@ -108,3 +76,86 @@ var logError = function(jqXhr, text, exception) {
 $.get(serviceAddress)
   .done(createLayer)
   .fail(logError);
+
+function createPlacemark() {
+  const placemarkLayer = new WorldWind.RenderableLayer();
+  wwd.addLayer(placemarkLayer);
+  const placemarkAttributes = genericPlaceMarkAttributes();
+
+  const position = new WorldWind.Position(-12.96962, -38.513074, 100.0);
+  const position2 = new WorldWind.Position(-12.949055, -38.410343, 50.0);
+  const placemark = new WorldWind.Placemark(
+    position,
+    false,
+    placemarkAttributes
+  );
+  const placemark2 = new WorldWind.Placemark(
+    position2,
+    false,
+    placemarkAttributes
+  );
+
+  placemark2.label =
+    "Casa de Geruso: \n" +
+    "Lat " +
+    placemark.position.latitude.toPrecision(4).toString() +
+    "\n" +
+    "Lon " +
+    placemark.position.longitude.toPrecision(5).toString();
+
+  placemark.label =
+    "Nossa localização: \n" +
+    "Lat " +
+    placemark.position.latitude.toPrecision(4).toString() +
+    "\n" +
+    "Lon " +
+    placemark.position.longitude.toPrecision(5).toString();
+  placemark.alwaysOnTop = true;
+  placemark2.alwaysOnTop = true;
+  placemarkLayer.addRenderable(placemark2);
+  placemarkLayer.addRenderable(placemark);
+  const neuPlaceMark = addPlacemark("Teste", -10, -20);
+  const neu2PlaceMark = addPlacemark("UCSAL", -12.948226, -38.413164);
+  placemarkLayer.addRenderable(neu2PlaceMark);
+  placemarkLayer.addRenderable(neuPlaceMark);
+  return position;
+}
+
+function genericPlaceMarkAttributes() {
+  const placemarkAttributes = new WorldWind.PlacemarkAttributes(null);
+  placemarkAttributes.imageOffset = new WorldWind.Offset(
+    WorldWind.OFFSET_FRACTION,
+    0.3,
+    WorldWind.OFFSET_FRACTION,
+    0.0
+  );
+  placemarkAttributes.labelAttributes.offset = new WorldWind.Offset(
+    WorldWind.OFFSET_FRACTION,
+    0.5,
+    WorldWind.OFFSET_FRACTION,
+    1.0
+  );
+  placemarkAttributes.imageSource =
+    WorldWind.configuration.baseUrl + "images/pushpins/plain-red.png";
+  return placemarkAttributes;
+}
+function addPlacemark(nome, lat, lng) {
+  const posicao = new WorldWind.Position(lat, lng, 100.0);
+  const placeMarkAttribute = genericPlaceMarkAttributes();
+  const placemarkn = new WorldWind.Placemark(
+    posicao,
+    false,
+    placeMarkAttribute
+  );
+
+  placemarkn.label =
+    nome +
+    +"\n" +
+    "Lat " +
+    placemarkn.position.latitude.toPrecision(4).toString() +
+    "\n" +
+    "Lon " +
+    placemarkn.position.longitude.toPrecision(5).toString();
+  placemarkn.alwaysOnTop = true;
+  return placemarkn;
+}
