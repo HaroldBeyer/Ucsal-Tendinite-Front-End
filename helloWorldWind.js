@@ -33,11 +33,11 @@ placemarkAttributes.labelAttributes.offset = new WorldWind.Offset(
 placemarkAttributes.imageSource =
   WorldWind.configuration.baseUrl + "images/pushpins/plain-red.png";
 
-var position = new WorldWind.Position(55.0, -106.0, 100.0);
+var position = new WorldWind.Position(-12.96962, -38.513074, 100.0);
 var placemark = new WorldWind.Placemark(position, false, placemarkAttributes);
 
 placemark.label =
-  "Placemark\n" +
+  "Nossa localização: \n" +
   "Lat " +
   placemark.position.latitude.toPrecision(4).toString() +
   "\n" +
