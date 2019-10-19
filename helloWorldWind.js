@@ -8,14 +8,7 @@ Http.onreadystatechange = e => {
     console.log(Http.responseText);
 };
 */
-const Http = new XMLHttpRequest();
-const url = "http://localhost:3000/api/diseases";
-Http.open("GET", url);
-Http.send();
-
-Http.onreadystatechange = e => {
-  console.log(Http.responseText);
-};
+getDiseases();
 
 //const http = require("http");
 //http.get("https//localhost:3000/diseases", res => {
@@ -96,6 +89,36 @@ var logError = function(jqXhr, text, exception) {
 $.get(serviceAddress)
   .done(createLayer)
   .fail(logError);
+
+/**
+ * Get the diseases (lmao that's not a good name, but it's the object that comes from our api)
+ * Plz nasa approve my project, i love you <3
+ */
+function getDiseases() {
+  const Http = new XMLHttpRequest();
+  const url = "http://localhost:3000/api/diseases";
+  Http.open("GET", url);
+  Http.send();
+  const obj = [];
+  let done = false;
+  Http.onreadystatechange = e => {
+    while (!done) {
+      const dados = JSON.parse(e["currentTarget"]["response"]);
+      if (dados && dados != "") {
+        console.log("Arquivo total:" + dados);
+        const keys = Object.keys(dados);
+        for (const key of keys) {
+          obj.push(dados[key]);
+        }
+        console.log("Dados recebidos: " + obj);
+        done = true;
+      } else {
+        //Treating errors;
+        done = false;
+      }
+    }
+  };
+}
 
 function createPlacemark() {
   const placemarkLayer = new WorldWind.RenderableLayer();
