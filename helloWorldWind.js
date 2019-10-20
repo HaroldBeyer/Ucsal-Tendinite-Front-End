@@ -94,10 +94,11 @@ function createPlacemark() {
           for (const country of countries) {
             const name = obj[disease]["name"];
             const lat = obj[disease]["countries"][country]["lat"];
+            const countryName = obj[disease]["countries"][country]["name"];
             const ltn =
               obj[disease]["countries"][country]["ltn"] ||
               obj[disease]["countries"][country]["ltn"];
-            const plac3mark = addPlacemark(name, lat, ltn);
+            const plac3mark = addPlacemark(name, lat, ltn, countryName);
             placemarkLayer.addRenderable(plac3mark);
           }
         }
@@ -127,7 +128,7 @@ function genericPlaceMarkAttributes() {
     WorldWind.configuration.baseUrl + "images/pushpins/plain-red.png";
   return placemarkAttributes;
 }
-function addPlacemark(nome, lat, lng) {
+function addPlacemark(nome, lat, lng, countryName) {
   // console.log(
   //  "Adicionando placemark. Nome: " + nome + "lat e ltn:" + lat + " " + lng
   //);
@@ -146,7 +147,9 @@ function addPlacemark(nome, lat, lng) {
     placemarkn.position.latitude.toPrecision(4).toString() +
     "\n" +
     "Lon " +
-    placemarkn.position.longitude.toPrecision(5).toString();
+    placemarkn.position.longitude.toPrecision(5).toString() +
+    ". Country name: " +
+    countryName;
   placemarkn.alwaysOnTop = true;
   return placemarkn;
 }
