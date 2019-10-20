@@ -8,6 +8,7 @@ Http.onreadystatechange = e => {
     console.log(Http.responseText);
 };
 */
+//getDiseases();
 
 //const http = require("http");
 //http.get("https//localhost:3000/diseases", res => {
