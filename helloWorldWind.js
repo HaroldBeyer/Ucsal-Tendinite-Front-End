@@ -144,7 +144,9 @@ function createPlacemark() {
           for (const country of countries) {
             const name = obj[disease]["name"];
             const lat = obj[disease]["countries"][country]["lat"];
-            const ltn = obj[disease]["countries"][country]["ltn"];
+            const ltn =
+              obj[disease]["countries"][country]["ltn"] ||
+              obj[disease]["countries"][country]["ltn"];
             const plac3mark = addPlacemark(name, lat, ltn);
             placemarkLayer.addRenderable(plac3mark);
           }
