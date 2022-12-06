@@ -27,6 +27,6 @@
   "homepage": "https://gitlab.com/haroldbeyer/ucsal-tendinite-front-end#readme",
   "dependencies": {
     "@nasaworldwind/worldwind": "^0.9.0",
-    "http-server": "^0.11.1"
+    "http-server": "^0.11.2"
   }
 }
